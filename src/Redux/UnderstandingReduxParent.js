@@ -1,6 +1,53 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from '../Actions/index';
+import './redux.css';
 const UnderStandingReduxParent = () => {
-  return <div>Hello Redux</div>;
+  const data = useSelector((state) => {
+    console.log(state);
+    return state.changeStateOfcounter;
+  });
+  const dispatch = useDispatch();
+  function getValueFrominput(e) {
+    console.log(e);
+  }
+  function changeCounterValue(item) {
+    if (item === 'INC') {
+      dispatch(increment());
+    } else {
+      dispatch(decrement());
+    }
+  }
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '400px',
+        height: '400px',
+        border: '1px solid black',
+        backgroundColor: '#E5B5FF',
+        borderRadius: '5px',
+      }}
+    >
+      <button
+        onClick={() => {
+          changeCounterValue('DEC');
+        }}
+      >
+        -
+      </button>
+      <input type="number" value={data} onChange={getValueFrominput} />
+      <button
+        onClick={() => {
+          changeCounterValue('INC');
+        }}
+      >
+        +
+      </button>
+    </div>
+  );
 };
 export default UnderStandingReduxParent;
 

@@ -1,0 +1,14 @@
+button {
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 5px;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+input {
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 5px;
+  border-color: transparent;
+}

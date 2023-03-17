@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import './style.css';
 import ParentForChild from './ParentForChild';
 import UnderstandingReduxParent from './Redux/UnderstandingReduxParent';
+import store from './store';
+import { Provider } from 'react-redux';
 export default function App() {
+  store.subscribe((data) => {
+    console.log(data);
+  });
   let [feature, setFeature] = useState('redux');
 
   const appDataObject = {
@@ -59,7 +64,9 @@ export default function App() {
       {feature === 'context' ? (
         <ParentForChild />
       ) : (
-        <UnderstandingReduxParent />
+        <Provider store={store}>
+          <UnderstandingReduxParent />
+        </Provider>
       )}
     </div>
   );
