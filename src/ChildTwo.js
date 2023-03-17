@@ -1,10 +1,10 @@
 import React, { createContext, useContext } from 'react';
 import ChildThree from './ChildThree';
-import { appData } from './App';
+import { appData } from './ParentForChild';
 let childTwoContext1 = createContext();
 let childTwoContext2 = createContext();
 const ChildTwo = () => {
-  let childTwoData = useContext(appData);
+  //let childTwoData = useContext(appData);
   return (
     <div
       style={{
@@ -21,7 +21,7 @@ const ChildTwo = () => {
         </childTwoContext2.Provider>
       </childTwoContext1.Provider>
 
-      <p>{childTwoData.name}</p>
+      {/* <p>{childTwoData.name}</p> */}
     </div>
   );
 };

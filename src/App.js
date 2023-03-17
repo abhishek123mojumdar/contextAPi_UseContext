@@ -1,24 +1,69 @@
-import React, { createContext } from 'react';
+import React, { useState } from 'react';
 import './style.css';
-import ChildOne from './ChildOne';
-let appData = createContext();
+import ParentForChild from './ParentForChild';
+import UnderstandingReduxParent from './Redux/UnderstandingReduxParent';
 export default function App() {
+  let [feature, setFeature] = useState('redux');
+
   const appDataObject = {
     name: 'Abhishek',
     roll: 1205071,
     age: 29,
   };
+
+  function showFeature(item) {
+    setFeature(item);
+  }
+
+  function showAvailableFeatures() {
+    return (
+      <>
+        <ol
+          style={{
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            width: '90vw',
+          }}
+        >
+          <li
+            onClick={() => {
+              showFeature('redux');
+            }}
+          >
+            Redux
+          </li>
+          <li
+            onClick={() => {
+              showFeature('context');
+            }}
+          >
+            Context Api and useContext
+          </li>
+        </ol>
+      </>
+    );
+  }
   return (
-    <div>
-      <h1>Hello Context APi</h1>
-      <appData.Provider value={appDataObject}>
-        <ChildOne />
-      </appData.Provider>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      {showAvailableFeatures()}
+      <hr />
+      <h1>Hello State management</h1>
+      {feature === 'context' ? (
+        <ParentForChild />
+      ) : (
+        <UnderstandingReduxParent />
+      )}
     </div>
   );
 }
-
-export { appData };
 
 //In react if you have component structure like App --> child1 --> child2 --> child3 --> child4 and we want to pass data from child1 to child 4 , there is no way of doing it other than passing the props through each component (prop drilling) . This would create a long prop chain . To solve this problem we can use contextAPi and use context
 
