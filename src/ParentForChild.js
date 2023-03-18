@@ -19,7 +19,7 @@ export default function ParentForChild() {
       }}
     >
       <h3>Context APi and useContext</h3>
-      <appData.Provider value={{ appDataObject }}>
+      <appData.Provider value={appDataObject}>
         <ChildOne />
       </appData.Provider>
     </div>
